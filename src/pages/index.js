@@ -14,7 +14,7 @@ export default function Home() {
 
   const TruncatedCaption = ({ caption }) => {
     const [showMore, setShowMore] = useState(false);
-    const isLongCaption = caption.length > 125;
+    const isLongCaption = caption ? caption.length > 125 : false;
   
     const displayCaption = isLongCaption && !showMore ? caption.substring(0, 125) : caption;
   
@@ -48,17 +48,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BookSP</title>
+        <title>Alice</title>
         <meta name="description" content="本のキューブ" />
       </Head>
       <main className="flex min-h-[100vh] flex-col items-start p-10 gap-10">
         <section className="flex justify-between w-full">
         <div className="self-center flex gap-1 font-serif text-3xl">
           <p className='self-end font-black tracking-wide mr-2'>
-            BookSP
-          </p>
-          <p className='tracking-wide self-end text-2xl font-black'>
-            Facade
+            Alice
           </p>
         </div>
         <div id="auth" className="flex gap-10 items-center">
@@ -87,51 +84,8 @@ export default function Home() {
           )}
         </div>
         </section>
-        <section id="weekly-pick" className="z-10 py-5 gap-7 flex flex-col justify-center bg-[#d7ecea] w-[100%]">
-          <div className='self-center pt-5'>
-            <p className='text-[#DB4D6D] font-black font-serif text-3xl'>Weekly Pick</p>
-          </div>
-          <div className='self-center'> 
-            { isClient ? 
-            <model-viewer
-              style={{ height: '300px' }}
-              src="/ventura-bookshelf.gltf"
-              alt="Your 3D model"
-              width="200px"
-              height="200px"
-              auto-rotate
-              rotation-per-second="30deg"
-              camera-controls
-              camera-orbit="45deg 90deg 20m"
-              shadow-intensity="1"></model-viewer>
-              : 'Loading model...' }
-          </div>
-          <div className="flex flex-col gap-7 w-1/3 self-center">
-            <div className='self-center'>
-              <Link href="">
-                <p>@booksp.offcial</p>
-              </Link>
-            </div>
-          <div className="self-center">  
-            <p className="">
-              These six books are selected for 2023 Hugo Award, which is the most prestigious award for science fiction and fantasy.
-            </p>
-            <br />
-            <p>
-              The announcement of the winner will be on October 21th.
-            </p>
-          </div>
-          <div className="self-center flex flex-col justify-center">
-          
-            <Link href="/detail">
-              <button className=" text-black font-bold font-serif rounded underline-offset-8 underline">
-                See details
-              </button>
-            </Link>
-          </div>
-          </div>
-        </section>
-        <section id="cube-feed" className="z-20 py-5 gap-7 flex flex-col justify-center w-[100%] ">
+
+        <section id="cube-feed" className="z-20 py-5 gap-7 flex flex-col justify-center w-[100%]">
         <div className="flex flex-wrap justify-center gap-5 w-1/3 self-center">
           {cubes.length ? (
             cubes.map((cube) => (
@@ -145,16 +99,17 @@ export default function Home() {
                   <model-viewer
                     style={{ height: '200px' }}
                     src={cube.gltfUrl}
-                    alt={cube.cubeCaption}
+                    alt={cube.caption}
                     width="100px"
                     height="100px"
+                    camera-controls
                     rotation-per-second="30deg"
                     camera-orbit="45deg 45deg 20m"
                     shadow-intensity="1"
                   ></model-viewer>
                 : 'Loading model...' }
                 </div>
-                <TruncatedCaption caption={cube.cubeCaption} />
+                <TruncatedCaption caption={cube.caption} />
               </div>
             ))
           ) : (
@@ -166,13 +121,13 @@ export default function Home() {
         {userId ? (
           <Link href="/create">
             <button className="absolute bottom-10 right-10 bg-[#f5bf34] hover:opacity-70 text-white font-bold font-serif py-4 px-12 rounded-full">
-              Create Your Cube
+              Post
             </button>
           </Link>
         ) : (
           <Link href="/login">
             <button className="absolute bottom-10 right-10 bg-[#f5bf34] hover:opacity-70 text-white font-bold font-serif py-4 px-12 rounded-full">
-              Create Your Cube
+              Post
             </button>
           </Link>
         )}
