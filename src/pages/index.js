@@ -53,11 +53,11 @@ export default function Home() {
       </Head>
       <main className="flex min-h-[100vh] flex-col items-start p-10 gap-10">
         <section className="flex justify-between w-full">
-        <div className="self-center flex gap-1 font-serif text-2xl">
-          <p className='self-end tracking-wide mr-2'>
+        <div className="self-center flex gap-1 font-serif text-3xl">
+          <p className='self-end font-black tracking-wide mr-2'>
             BookSP
           </p>
-          <p className='tracking-wide font-black text-3xl'>
+          <p className='tracking-wide self-end text-2xl font-black'>
             Facade
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function Home() {
             { isClient ? 
             <model-viewer
               style={{ height: '300px' }}
-              src="https://firebasestorage.googleapis.com/v0/b/booksp-eae3c.appspot.com/o/users%2FNupoAf7FpgPdbxVH2p9VitTJnWj1%2Fcubes%2FHugo%202023%20Nominees%2FHugo%202023%20Nominees.glb?alt=media&token=d42d6e6f-37eb-4b97-824d-7a92170cdf57"
+              src="/ventura-bookshelf.gltf"
               alt="Your 3D model"
               width="200px"
               height="200px"
