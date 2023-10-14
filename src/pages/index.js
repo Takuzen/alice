@@ -48,15 +48,20 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Alice</title>
-        <meta name="description" content="本のキューブ" />
+        <title>Cube</title>
+        <meta name="description" content="platform for personal 3D contents." />
       </Head>
       <main className="flex min-h-[100vh] flex-col items-start p-10 gap-10">
         <section className="flex justify-between w-full">
         <div className="self-center flex gap-1 font-serif text-3xl">
-          <p className='self-end font-black tracking-wide mr-2'>
-            Alice
-          </p>
+          <Image
+                  src="/cube-brown-logo.png"
+                  alt="Default Profile Image"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                  priority
+                />
         </div>
         <div id="auth" className="flex gap-10 items-center">
           {userId ? (
